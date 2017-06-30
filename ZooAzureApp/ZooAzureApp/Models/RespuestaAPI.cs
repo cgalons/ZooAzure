@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ZooApp
+namespace ZooAzureApp
 {
     
     public class RespuestaAPI
@@ -15,9 +15,9 @@ namespace ZooApp
 
         public List<TipoAnimal> dataTipoAnimal { get; set; }
 
-        public List<Clasificacion> dataClasificacion { get; set; }
+        //public List<Clasificacion> dataClasificacion { get; set; }
 
-        public List<Especie> dataEspecie { get; set; }
+        //public List<Especie> dataEspecie { get; set; }
 
     }
 }
