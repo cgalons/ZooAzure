@@ -7,19 +7,19 @@ using System.Web.Http;
 
 namespace ZooAzureApp.Controllers
 {
-    public class TipoAnimalController : ApiController
+    public class ClasificacionController : ApiController
     {
-        // GET: api/TipoAnimal
+        // GET: api/Clasificacion
         public RespuestaAPI Get()
         {
             RespuestaAPI respuestaAPI = new RespuestaAPI();
-            List<TipoAnimal> dataTipoAnimal = new List<TipoAnimal>();
+            List<Clasificacion> dataClasificacion = new List<Clasificacion>();
             try
             {
                 Db.Conectar();
                 if (Db.EstaLaConexionAbierta())
                 {
-                    dataTipoAnimal = Db.GetTablaTiposAnimal();
+                    dataClasificacion = Db.GetTablaClasificaciones();
                 }
                 respuestaAPI.error = "";
                 Db.Desconectar();
@@ -30,23 +30,23 @@ namespace ZooAzureApp.Controllers
                 respuestaAPI.error = "Se produjo un error";
             }
 
-            respuestaAPI.totalData = dataTipoAnimal.Count;
-            respuestaAPI.dataTipoAnimal = dataTipoAnimal;
+            respuestaAPI.totalData = dataClasificacion.Count;
+            respuestaAPI.dataClasificacion = dataClasificacion;
             return respuestaAPI;
         }
-//-----------------------------------------------------------------------------------------------
-        // GET: api/TipoAnimal/5
+        //-----------------------------------------------------------------------------------------------
+        // GET: api/Clasificacion/5
         public RespuestaAPI Get(long id)
         {
             RespuestaAPI respuestaAPI = new RespuestaAPI();
-            List<TipoAnimal> dataTipoAnimal = new List<TipoAnimal>();
+            List<Clasificacion> dataClasificacion = new List<Clasificacion>();
             try
             {
                 Db.Conectar();
 
                 if (Db.EstaLaConexionAbierta())
                 {
-                    dataTipoAnimal = Db.GetTipoAnimalPorId(id);
+                    dataClasificacion = Db.GetClasificacionesPorId(id);
                 }
                 respuestaAPI.error = "";
                 Db.Desconectar();
@@ -56,15 +56,15 @@ namespace ZooAzureApp.Controllers
                 respuestaAPI.error = "Se produjo un error";
             }
 
-            respuestaAPI.totalData = dataTipoAnimal.Count;
-            respuestaAPI.dataTipoAnimal = dataTipoAnimal;
+            respuestaAPI.totalData = dataClasificacion.Count;
+            respuestaAPI.dataClasificacion = dataClasificacion;
             return respuestaAPI;
         }
         //---------------------------------------------------------------------------------------------------------
 
-        // POST: api/TipoAnimal
+        // POST: api/Clasificacion
         [HttpPost]
-        public RespuestaAPI Post([FromBody] TipoAnimal denominacionTipoAnimal)
+        public RespuestaAPI Post([FromBody] Clasificacion denominacionClasificacion)
         {
             RespuestaAPI resultado = new RespuestaAPI();
             int filasAfectadas = 0;
@@ -74,7 +74,7 @@ namespace ZooAzureApp.Controllers
 
                 if (Db.EstaLaConexionAbierta())
                 {
-                    filasAfectadas = Db.AgregarTipoAnimal(denominacionTipoAnimal);
+                    filasAfectadas = Db.AgregarClasificacion(denominacionClasificacion);
                 }
                 resultado.error = "";
                 Db.Desconectar();
@@ -85,18 +85,18 @@ namespace ZooAzureApp.Controllers
             }
 
             resultado.totalData = filasAfectadas;
-            resultado.dataTipoAnimal = null;
+            resultado.dataClasificacion = null;
             return resultado;
         }
 
 
         //--------------------------------------------------------------------------------------------------------------
-        // PUT: api/TipoAnimal/5
+        // PUT: api/Clasificacion/5
         [HttpPut]
-        public RespuestaAPI Put(int id, [FromBody] TipoAnimal denominacionTipoAnimal)
+        public RespuestaAPI Put(int id, [FromBody] Clasificacion denominacionClasificacion)
 
         {
-           
+
             RespuestaAPI resultado = new RespuestaAPI();
             resultado.error = "";
             int filasAfectadas = 0;
@@ -106,7 +106,7 @@ namespace ZooAzureApp.Controllers
 
                 if (Db.EstaLaConexionAbierta())
                 {
-                    filasAfectadas = Db.ActualizarTablaTiposAnimal(id, denominacionTipoAnimal);
+                    filasAfectadas = Db.ActualizarTablaClasificaciones(id, denominacionClasificacion);
 
                 }
 
@@ -127,7 +127,7 @@ namespace ZooAzureApp.Controllers
 
 
         //------------------------------------------------------------------------------------------------------------------
-        // DELETE: api/TipoAnimal/5
+        // DELETE: api/Clasificacion/5
         [HttpDelete]
         public RespuestaAPI Delete(int id)
         {
@@ -139,7 +139,7 @@ namespace ZooAzureApp.Controllers
 
                 if (Db.EstaLaConexionAbierta())
                 {
-                    filasAfectadas = Db.EliminarTipoAnimal(id);
+                    filasAfectadas = Db.EliminarClasificacion(id);
                 }
                 resultado.error = "";
                 Db.Desconectar();
@@ -150,7 +150,7 @@ namespace ZooAzureApp.Controllers
             }
 
             resultado.totalData = filasAfectadas;
-            resultado.dataTipoAnimal = null;
+            resultado.dataClasificacion = null;
             return resultado;
         }
     }

@@ -163,274 +163,274 @@ namespace ZooAzureApp
         }
 
 
-//----------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------------
 
 
-        //public static List<Clasificacion> GetTablaClasificaciones()
-        //{
-        //    List<Clasificacion> listaClasificacion = new List<Clasificacion>();
+        public static List<Clasificacion> GetTablaClasificaciones()
+        {
+            List<Clasificacion> listaClasificacion = new List<Clasificacion>();
 
-        //    string procedimiento = "dbo.GetTablaClasificaciones";
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlDataReader reader = comando.ExecuteReader();
+            string procedimiento = "dbo.GetTablaClasificaciones";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = comando.ExecuteReader();
 
-        //    while (reader.Read())
-        //    {
-        //        Clasificacion modelClasificacion = new Clasificacion();
-        //        modelClasificacion.idClasificacion = (long)reader["idClasificacion"];
-        //        modelClasificacion.denominacionClasificacion= reader["denominacionClasificacion"].ToString();
-        //        listaClasificacion.Add(modelClasificacion);
-        //    }
+            while (reader.Read())
+            {
+                Clasificacion modelClasificacion = new Clasificacion();
+                modelClasificacion.idClasificacion = (long)reader["idClasificacion"];
+                modelClasificacion.denominacionClasificacion = reader["denominacionClasificacion"].ToString();
+                listaClasificacion.Add(modelClasificacion);
+            }
 
-        //    return listaClasificacion;
-        //}
+            return listaClasificacion;
+        }
 
-        //public static List<Clasificacion> GetClasificacionesPorId(long id)
-        //{
-        //    List<Clasificacion> listaClasificacion = new List<Clasificacion>();
+        public static List<Clasificacion> GetClasificacionesPorId(long id)
+        {
+            List<Clasificacion> listaClasificacion = new List<Clasificacion>();
 
-        //    string procedimiento = "dbo.GetClasificacionesPorId";
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlParameter parametroId = new SqlParameter();
-        //    parametroId.ParameterName = "idClasificacion";//Nombre parametro PA, no de la tabla ni parámetro función
-        //    parametroId.SqlDbType = SqlDbType.BigInt;
-        //    parametroId.SqlValue = id;
-        //    comando.Parameters.Add(parametroId);
-        //    SqlDataReader reader = comando.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        Clasificacion modelClasificacion = new Clasificacion();
-        //        modelClasificacion.idClasificacion = (long)reader["idClasificacion"];
-        //        modelClasificacion.denominacionClasificacion = reader["denominacionClasificacion"].ToString();
-        //        listaClasificacion.Add(modelClasificacion);
-               
-        //    }
+            string procedimiento = "dbo.GetClasificacionesPorId";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroId = new SqlParameter();
+            parametroId.ParameterName = "idClasificacion";//Nombre parametro PA, no de la tabla ni parámetro función
+            parametroId.SqlDbType = SqlDbType.BigInt;
+            parametroId.SqlValue = id;
+            comando.Parameters.Add(parametroId);
+            SqlDataReader reader = comando.ExecuteReader();
+            while (reader.Read())
+            {
+                Clasificacion modelClasificacion = new Clasificacion();
+                modelClasificacion.idClasificacion = (long)reader["idClasificacion"];
+                modelClasificacion.denominacionClasificacion = reader["denominacionClasificacion"].ToString();
+                listaClasificacion.Add(modelClasificacion);
 
-        //    return listaClasificacion;
-        //}
+            }
 
-        //public static int AgregarClasificacion(Clasificacion modelClasificacion)
-        //{
-        //    string procedimiento = "dbo.AgregarClasificacion";
+            return listaClasificacion;
+        }
 
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlParameter parametro = new SqlParameter();
-        //    parametro.ParameterName = "denominacionClasificacion";
-        //    parametro.SqlDbType = SqlDbType.NVarChar;
-        //    parametro.SqlValue = modelClasificacion.denominacionClasificacion;
+        public static int AgregarClasificacion(Clasificacion modelClasificacion)
+        {
+            string procedimiento = "dbo.AgregarClasificacion";
 
-        //    comando.Parameters.Add(parametro);
-        //    int filasAfectadas = comando.ExecuteNonQuery();
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "denominacionClasificacion";
+            parametro.SqlDbType = SqlDbType.NVarChar;
+            parametro.SqlValue = modelClasificacion.denominacionClasificacion;
 
-        //    return filasAfectadas;
-        //}
+            comando.Parameters.Add(parametro);
+            int filasAfectadas = comando.ExecuteNonQuery();
 
-        //public static int ActualizarTablaClasificaciones (long idClasificacion, Clasificacion modelClasificacion)
-        //{
-        //    string procedimiento = "dbo.ActualizarTablaClasificaciones";
+            return filasAfectadas;
+        }
 
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlParameter parametro = new SqlParameter();
-        //    parametro.ParameterName = "idClasificacion";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = idClasificacion;
-        //    comando.Parameters.Add(parametro);
+        public static int ActualizarTablaClasificaciones(long idClasificacion, Clasificacion modelClasificacion)
+        {
+            string procedimiento = "dbo.ActualizarTablaClasificaciones";
 
-        //    SqlParameter parametroDenominacion = new SqlParameter();
-        //    parametroDenominacion.ParameterName = "denominacionClasificacion";
-        //    parametroDenominacion.SqlDbType = SqlDbType.NVarChar;
-        //    parametroDenominacion.SqlValue = modelClasificacion.denominacionClasificacion;
-        //    comando.Parameters.Add(parametroDenominacion);
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "idClasificacion";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = idClasificacion;
+            comando.Parameters.Add(parametro);
 
-        //    int filasAfectadas = comando.ExecuteNonQuery();
+            SqlParameter parametroDenominacion = new SqlParameter();
+            parametroDenominacion.ParameterName = "denominacionClasificacion";
+            parametroDenominacion.SqlDbType = SqlDbType.NVarChar;
+            parametroDenominacion.SqlValue = modelClasificacion.denominacionClasificacion;
+            comando.Parameters.Add(parametroDenominacion);
 
-        //    return filasAfectadas;
-        //}
+            int filasAfectadas = comando.ExecuteNonQuery();
 
-        //public static int EliminarClasificacion(long idClasificacion)
-        //{
-        //    string procedimiento = "dbo.EliminarClasificacion";
+            return filasAfectadas;
+        }
 
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlParameter parametro = new SqlParameter();
-        //    parametro.ParameterName = "idClasificacion";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = idClasificacion;
+        public static int EliminarClasificacion(long idClasificacion)
+        {
+            string procedimiento = "dbo.EliminarClasificacion";
 
-        //    comando.Parameters.Add(parametro);
-        //    int filasAfectadas = comando.ExecuteNonQuery();
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "idClasificacion";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = idClasificacion;
 
-        //    return filasAfectadas;
-        //}
+            comando.Parameters.Add(parametro);
+            int filasAfectadas = comando.ExecuteNonQuery();
+
+            return filasAfectadas;
+        }
 
 
-//-----------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------------------
 
-        //public static List<Especie> GetTablaEspecies()
-        //{
-        //    List<Especie> listaEspecie = new List<Especie>();
+        public static List<Especie> GetTablaEspecies()
+        {
+            List<Especie> listaEspecie = new List<Especie>();
 
-        //    string procedimiento = "dbo.GetTablaEspecies";
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlDataReader reader = comando.ExecuteReader();
+            string procedimiento = "dbo.GetTablaEspecies";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = comando.ExecuteReader();
 
-        //    while (reader.Read())
-        //    {
-        //        Especie modelEspecie = new Especie();
-        //        modelEspecie.idEspecie = (long)reader["idEspecie"];
-        //        modelEspecie.clasificacion = new Clasificacion();
-        //        modelEspecie.clasificacion.idClasificacion = (long)reader["idClasificacionTE"];
-        //        modelEspecie.tipoAnimal = new TipoAnimal();
-        //        modelEspecie.tipoAnimal.idTipoAnimal = (long)reader["idTipoAnimalTE"];
-        //        modelEspecie.nombre = reader["nombre"].ToString();
-        //        modelEspecie.nPatas = (int)reader["nPatas"];
-        //        modelEspecie.esMascota = (bool)reader["esMascota"];
-        //        listaEspecie.Add(modelEspecie);
-        //    }
+            while (reader.Read())
+            {
+                Especie modelEspecie = new Especie();
+                modelEspecie.idEspecie = (long)reader["idEspecie"];
+                modelEspecie.clasificacion = new Clasificacion();
+                modelEspecie.clasificacion.idClasificacion = (long)reader["idClasificacionTE"];
+                modelEspecie.tipoAnimal = new TipoAnimal();
+                modelEspecie.tipoAnimal.idTipoAnimal = (long)reader["idTipoAnimalTE"];
+                modelEspecie.nombre = reader["nombre"].ToString();
+                modelEspecie.nPatas = (int)reader["nPatas"];
+                modelEspecie.esMascota = (bool)reader["esMascota"];
+                listaEspecie.Add(modelEspecie);
+            }
 
-        //    return listaEspecie;
-        //}
+            return listaEspecie;
+        }
 
-        //public static List<Especie> GetEspeciesPorId(long idEspecie)
-        //{
-        //    List<Especie> listaEspecie = new List<Especie>();
+        public static List<Especie> GetEspeciesPorId(long idEspecie)
+        {
+            List<Especie> listaEspecie = new List<Especie>();
 
-        //    string procedimiento = "dbo.GetEspeciesPorId";
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlParameter parametroId = new SqlParameter();
-        //    parametroId.ParameterName = "idEspecie";
-        //    parametroId.SqlDbType = SqlDbType.BigInt;
-        //    parametroId.SqlValue = idEspecie;
-        //    comando.Parameters.Add(parametroId);
-        //    SqlDataReader reader = comando.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        Especie modelEspecie = new Especie();
-        //        modelEspecie.idEspecie = (long)reader["idEspecie"];
-        //        modelEspecie.clasificacion = new Clasificacion();
-        //        modelEspecie.clasificacion.idClasificacion = (long)reader["idClasificacionTE"];
-        //        modelEspecie.tipoAnimal = new TipoAnimal();
-        //        modelEspecie.tipoAnimal.idTipoAnimal = (long)reader["idTipoAnimalTE"];
-        //        modelEspecie.nombre = reader["nombre"].ToString();
-        //        modelEspecie.nPatas = (int)reader["nPatas"];
-        //        modelEspecie.esMascota = (bool)reader["esMascota"];
-        //        listaEspecie.Add(modelEspecie);
-        //    }
+            string procedimiento = "dbo.GetEspeciesPorId";
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametroId = new SqlParameter();
+            parametroId.ParameterName = "idEspecie";
+            parametroId.SqlDbType = SqlDbType.BigInt;
+            parametroId.SqlValue = idEspecie;
+            comando.Parameters.Add(parametroId);
+            SqlDataReader reader = comando.ExecuteReader();
+            while (reader.Read())
+            {
+                Especie modelEspecie = new Especie();
+                modelEspecie.idEspecie = (long)reader["idEspecie"];
+                modelEspecie.clasificacion = new Clasificacion();
+                modelEspecie.clasificacion.idClasificacion = (long)reader["idClasificacionTE"];
+                modelEspecie.tipoAnimal = new TipoAnimal();
+                modelEspecie.tipoAnimal.idTipoAnimal = (long)reader["idTipoAnimalTE"];
+                modelEspecie.nombre = reader["nombre"].ToString();
+                modelEspecie.nPatas = (int)reader["nPatas"];
+                modelEspecie.esMascota = (bool)reader["esMascota"];
+                listaEspecie.Add(modelEspecie);
+            }
 
-        //    return listaEspecie;
-        //}
+            return listaEspecie;
+        }
 
-        //public static int AgregarEspecies(Especie modelEspecie)
-        //{
-        //    string procedimiento = "dbo.AgregarEspecies";
+        public static int AgregarEspecies(Especie modelEspecie)
+        {
+            string procedimiento = "dbo.AgregarEspecies";
 
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
 
-        //    SqlParameter parametro = new SqlParameter();
-        //    parametro.ParameterName = "idClasificacionTE";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = modelEspecie.clasificacion.idClasificacion;
-        //    comando.Parameters.Add(parametro);
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "idClasificacionTE";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = modelEspecie.clasificacion.idClasificacion;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "idTipoAnimalTE";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = modelEspecie.tipoAnimal.idTipoAnimal;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "idTipoAnimalTE";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = modelEspecie.tipoAnimal.idTipoAnimal;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "nombre";
-        //    parametro.SqlDbType = SqlDbType.NVarChar;
-        //    parametro.SqlValue = modelEspecie.nombre;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "nombre";
+            parametro.SqlDbType = SqlDbType.NVarChar;
+            parametro.SqlValue = modelEspecie.nombre;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "nPatas";
-        //    parametro.SqlDbType = SqlDbType.Int;
-        //    parametro.SqlValue = modelEspecie.nPatas;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "nPatas";
+            parametro.SqlDbType = SqlDbType.Int;
+            parametro.SqlValue = modelEspecie.nPatas;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "esMascota";
-        //    parametro.SqlDbType = SqlDbType.Bit;
-        //    parametro.SqlValue = modelEspecie.esMascota;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "esMascota";
+            parametro.SqlDbType = SqlDbType.Bit;
+            parametro.SqlValue = modelEspecie.esMascota;
+            comando.Parameters.Add(parametro);
 
-        //    int filasAfectadas = comando.ExecuteNonQuery();
+            int filasAfectadas = comando.ExecuteNonQuery();
 
-        //    return filasAfectadas;
-        //}
+            return filasAfectadas;
+        }
 
-        //public static int ActualizarTablaEspecies(long idEspecie, Especie modelEspecie)
-        //{
-        //    string procedimiento = "dbo.ActualizarTablaEspecies";
+        public static int ActualizarTablaEspecies(long idEspecie, Especie modelEspecie)
+        {
+            string procedimiento = "dbo.ActualizarTablaEspecies";
 
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlParameter parametro = new SqlParameter();
-        //    parametro.ParameterName = "idEspecie";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = idEspecie;
-        //    comando.Parameters.Add(parametro);
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "idEspecie";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = idEspecie;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "idClasificacionTE";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = modelEspecie.clasificacion.idClasificacion;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "idClasificacionTE";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = modelEspecie.clasificacion.idClasificacion;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "idTipoAnimalTE";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = modelEspecie.tipoAnimal.idTipoAnimal;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "idTipoAnimalTE";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = modelEspecie.tipoAnimal.idTipoAnimal;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "nombre";
-        //    parametro.SqlDbType = SqlDbType.NVarChar;
-        //    parametro.SqlValue = modelEspecie.nombre;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "nombre";
+            parametro.SqlDbType = SqlDbType.NVarChar;
+            parametro.SqlValue = modelEspecie.nombre;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "nPatas";
-        //    parametro.SqlDbType = SqlDbType.Int;
-        //    parametro.SqlValue =  modelEspecie.nPatas;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "nPatas";
+            parametro.SqlDbType = SqlDbType.Int;
+            parametro.SqlValue = modelEspecie.nPatas;
+            comando.Parameters.Add(parametro);
 
-        //    parametro = new SqlParameter();
-        //    parametro.ParameterName = "esMascota";
-        //    parametro.SqlDbType = SqlDbType.Bit;
-        //    parametro.SqlValue = modelEspecie.esMascota;
-        //    comando.Parameters.Add(parametro);
+            parametro = new SqlParameter();
+            parametro.ParameterName = "esMascota";
+            parametro.SqlDbType = SqlDbType.Bit;
+            parametro.SqlValue = modelEspecie.esMascota;
+            comando.Parameters.Add(parametro);
 
-        //    int filasAfectadas = comando.ExecuteNonQuery();
+            int filasAfectadas = comando.ExecuteNonQuery();
 
-        //    return filasAfectadas;
-        //}
+            return filasAfectadas;
+        }
 
-        //public static int EliminarEspecie(long idEspecie)
-        //{
-        //    string procedimiento = "dbo.EliminarEspecie";
+        public static int EliminarEspecie(long idEspecie)
+        {
+            string procedimiento = "dbo.EliminarEspecie";
 
-        //    SqlCommand comando = new SqlCommand(procedimiento, conexion);
-        //    comando.CommandType = CommandType.StoredProcedure;
-        //    SqlParameter parametro = new SqlParameter();
-        //    parametro.ParameterName = "idEspecie";
-        //    parametro.SqlDbType = SqlDbType.BigInt;
-        //    parametro.SqlValue = idEspecie;
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "idEspecie";
+            parametro.SqlDbType = SqlDbType.BigInt;
+            parametro.SqlValue = idEspecie;
 
-        //    comando.Parameters.Add(parametro);
-        //    int filasAfectadas = comando.ExecuteNonQuery();
+            comando.Parameters.Add(parametro);
+            int filasAfectadas = comando.ExecuteNonQuery();
 
-        //    return filasAfectadas;
-        //}
+            return filasAfectadas;
+        }
     }
 }
